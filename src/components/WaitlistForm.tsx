@@ -1,13 +1,7 @@
 import { useState, useEffect, type FormEvent } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import {
-  ArrowRight,
-  Loader2,
-  ShieldCheck,
-  CheckCircle2,
-  Mail,
-} from "lucide-react";
+import { ArrowRight, Loader2, ShieldCheck, CheckCircle2, Mail } from "lucide-react";
 import { waitlistClient, WAITLIST_TABLE } from "@/lib/waitlist-client";
 import { track, identify } from "@/lib/analytics";
 
@@ -81,14 +75,12 @@ export function WaitlistForm() {
       });
 
       // Insert into Supabase
-      const { error } = await waitlistClient
-        .from(WAITLIST_TABLE)
-        .insert({
-          email: cleanEmail,
-          utm_source: utmParams.utm_source,
-          utm_campaign: utmParams.utm_campaign,
-          utm_medium: utmParams.utm_medium,
-        });
+      const { error } = await waitlistClient.from(WAITLIST_TABLE).insert({
+        email: cleanEmail,
+        utm_source: utmParams.utm_source,
+        utm_campaign: utmParams.utm_campaign,
+        utm_medium: utmParams.utm_medium,
+      });
 
       if (error) {
         // Handle duplicate email (unique constraint violation)
@@ -138,9 +130,7 @@ export function WaitlistForm() {
           </div>
           <div className="flex-1">
             <p className="text-base font-semibold text-foreground">
-              {alreadyJoined
-                ? "You're already on the list"
-                : "You're on the waitlist"}
+              {alreadyJoined ? "You're already on the list" : "You're on the waitlist"}
             </p>
             <p className="mt-1 text-sm text-foreground/75">
               {alreadyJoined

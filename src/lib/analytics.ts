@@ -35,10 +35,7 @@ function getEmailDomain(email: string): string {
   return parts.length === 2 ? parts[1] : "unknown";
 }
 
-export function track(
-  event: string,
-  properties?: Record<string, unknown>
-) {
+export function track(event: string, properties?: Record<string, unknown>) {
   if (typeof window === "undefined" || !POSTHOG_KEY) return;
   try {
     // Sanitize properties to never include full email
@@ -56,10 +53,7 @@ export function track(
   }
 }
 
-export function identify(
-  id: string,
-  properties?: Record<string, unknown>
-) {
+export function identify(id: string, properties?: Record<string, unknown>) {
   if (typeof window === "undefined" || !POSTHOG_KEY) return;
   try {
     // Sanitize to never send full email

@@ -27,8 +27,7 @@ export function PhoneMockup() {
         aria-hidden
         className="absolute -inset-10 -z-10 rounded-[3rem] blur-3xl opacity-60"
         style={{
-          background:
-            "radial-gradient(closest-side, var(--mint), transparent 70%)",
+          background: "radial-gradient(closest-side, var(--mint), transparent 70%)",
         }}
       />
 
@@ -47,9 +46,7 @@ export function PhoneMockup() {
           </div>
 
           {/* Content */}
-          <div
-            className="px-4 pt-3 pb-24 space-y-3.5 h-[640px] overflow-y-auto scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-contain"
-          >
+          <div className="px-4 pt-3 pb-24 space-y-3.5 h-[640px] overflow-y-auto scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden overscroll-contain">
             {/* Greeting */}
             <div className="flex items-center justify-between px-1 sticky top-0 bg-[oklch(0.985_0.005_180)] z-10 py-1 -mx-1 px-2">
               <div className="flex items-center gap-2.5">
@@ -77,13 +74,19 @@ export function PhoneMockup() {
               </div>
               <div className="grid grid-cols-2 gap-2 mt-3">
                 <div className="rounded-xl bg-muted px-3 py-2">
-                  <p className="text-[8px] font-semibold tracking-wider text-muted-foreground">MEMBERS</p>
+                  <p className="text-[8px] font-semibold tracking-wider text-muted-foreground">
+                    MEMBERS
+                  </p>
                   <p className="text-base font-bold text-primary-deep leading-tight mt-0.5">4</p>
                   <p className="text-[10px] font-medium text-foreground/70">Members</p>
                 </div>
                 <div className="rounded-xl bg-mint/40 border border-primary/30 px-3 py-2">
-                  <p className="text-[8px] font-semibold tracking-wider text-primary-deep">REMAINING</p>
-                  <p className="text-base font-bold text-primary-deep leading-tight mt-0.5">3 Doses</p>
+                  <p className="text-[8px] font-semibold tracking-wider text-primary-deep">
+                    REMAINING
+                  </p>
+                  <p className="text-base font-bold text-primary-deep leading-tight mt-0.5">
+                    3 Doses
+                  </p>
                 </div>
               </div>
             </div>
@@ -94,7 +97,9 @@ export function PhoneMockup() {
                 <div key={m.name} className="flex flex-col items-center gap-1 flex-1">
                   <div
                     className={`h-12 w-12 rounded-xl flex items-center justify-center text-white font-semibold text-sm shadow-soft ${
-                      m.active ? "ring-2 ring-primary ring-offset-2 ring-offset-[oklch(0.985_0.005_180)]" : ""
+                      m.active
+                        ? "ring-2 ring-primary ring-offset-2 ring-offset-[oklch(0.985_0.005_180)]"
+                        : ""
                     }`}
                     style={{ backgroundColor: m.color }}
                   >
@@ -127,7 +132,9 @@ export function PhoneMockup() {
                       </span>
                       <span className="text-[10px] font-medium text-muted-foreground">1:30 PM</span>
                     </div>
-                    <p className="text-sm font-bold text-foreground leading-tight">Atorvastatin 20mg</p>
+                    <p className="text-sm font-bold text-foreground leading-tight">
+                      Atorvastatin 20mg
+                    </p>
                     <p className="text-[10px] text-muted-foreground mt-1">For Dad · Post Lunch</p>
                   </div>
                   <div className="h-7 w-7 rounded-full bg-primary flex items-center justify-center shrink-0">
@@ -138,7 +145,9 @@ export function PhoneMockup() {
 
               <div className="rounded-lg border border-dashed border-primary/40 bg-primary-soft/30 px-3 py-1.5 flex items-center justify-center gap-1.5">
                 <History className="h-3 w-3 text-primary-deep" />
-                <span className="text-[10px] font-semibold text-primary-deep">2 Doses Taken Today</span>
+                <span className="text-[10px] font-semibold text-primary-deep">
+                  2 Doses Taken Today
+                </span>
               </div>
             </div>
 
@@ -149,25 +158,33 @@ export function PhoneMockup() {
             </button>
 
             {/* Refill Continuity (peach) */}
-            <div className="rounded-2xl border p-3 flex gap-3"
+            <div
+              className="rounded-2xl border p-3 flex gap-3"
               style={{
                 backgroundColor: "oklch(0.96 0.04 50)",
                 borderColor: "oklch(0.88 0.06 55)",
               }}
             >
-              <div className="h-9 w-9 rounded-full flex items-center justify-center shrink-0"
-                style={{ backgroundColor: "oklch(0.92 0.06 50)" }}>
+              <div
+                className="h-9 w-9 rounded-full flex items-center justify-center shrink-0"
+                style={{ backgroundColor: "oklch(0.92 0.06 50)" }}
+              >
                 <Package className="h-4 w-4" style={{ color: "oklch(0.50 0.15 40)" }} />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs font-bold" style={{ color: "oklch(0.45 0.16 35)" }}>
                   Refill Continuity
                 </p>
-                <p className="text-[10px] mt-0.5 leading-snug" style={{ color: "oklch(0.45 0.10 40)" }}>
+                <p
+                  className="text-[10px] mt-0.5 leading-snug"
+                  style={{ color: "oklch(0.45 0.10 40)" }}
+                >
                   Dad's BP medicine may run out in 4 days. Would you like to order now?
                 </p>
-                <button className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-bold"
-                  style={{ color: "oklch(0.50 0.16 35)" }}>
+                <button
+                  className="mt-1.5 inline-flex items-center gap-1 text-[10px] font-bold"
+                  style={{ color: "oklch(0.50 0.16 35)" }}
+                >
                   Order Refill <ShoppingCart className="h-3 w-3" />
                 </button>
               </div>
@@ -189,7 +206,9 @@ export function PhoneMockup() {
             ].map(({ icon: Icon, label, active }) => (
               <div key={label} className="flex flex-col items-center gap-0.5 flex-1">
                 <Icon className={`h-4 w-4 ${active ? "text-primary" : "text-muted-foreground"}`} />
-                <span className={`text-[9px] ${active ? "text-primary font-semibold" : "text-muted-foreground"}`}>
+                <span
+                  className={`text-[9px] ${active ? "text-primary font-semibold" : "text-muted-foreground"}`}
+                >
                   {label}
                 </span>
               </div>
