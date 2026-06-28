@@ -2,8 +2,9 @@ import { createClient } from "@supabase/supabase-js";
 
 // Supabase client for waitlist storage.
 // Uses VITE_* env variables loaded from .env
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? import.meta.env.VITE_SUPABASE_ANON_KEY;
+// Support standard Netlify/Supabase env vars without VITE_ prefix (using process.env fallback if built via node)
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL || import.meta.env.SUPABASE_URL || (typeof process !== "undefined" && process.env.SUPABASE_URL) || "";
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY || import.meta.env.SUPABASE_ANON_KEY || import.meta.env.SUPABASE_PUBLISHABLE_KEY || (typeof process !== "undefined" && (process.env.SUPABASE_ANON_KEY || process.env.SUPABASE_PUBLISHABLE_KEY)) || "";
 
 if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
   throw new Error(
