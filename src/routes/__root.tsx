@@ -46,7 +46,8 @@ export const Route = createRootRoute({
       { name: "twitter:title", content: "Renomedy — Family Care Simplified" },
       {
         name: "twitter:description",
-        content: "Understand prescriptions, manage medicines, and care for your family with confidence.",
+        content:
+          "Understand prescriptions, manage medicines, and care for your family with confidence.",
       },
     ],
     links: [
