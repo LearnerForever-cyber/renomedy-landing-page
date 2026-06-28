@@ -204,7 +204,7 @@ function Index() {
             </span>
           </div>
           <span className="hidden sm:inline-flex items-center gap-2 rounded-full border border-border bg-surface/70 backdrop-blur px-3 py-1 text-xs text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-teal-500 animate-pulse" />
+            <span className="h-1.5 w-1.5 rounded-full bg-teal-500" />
             Early Access • Family-First • India-Built
           </span>
         </div>
@@ -213,7 +213,7 @@ function Index() {
       {/* Hero */}
       <section className="mx-auto max-w-6xl px-6 py-14 sm:py-20 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-10 items-center">
-          <div className="max-w-xl">
+          <div className="max-w-xl relative z-20">
             <span className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-3 py-1 text-xs font-medium text-teal-700">
               🏥 Family Care Simplified
             </span>
@@ -229,7 +229,7 @@ function Index() {
             </p>
 
             {/* Waitlist CTA */}
-            <div className="mt-8 max-w-md">
+            <div className="mt-8 max-w-md relative z-50">
               <WaitlistForm />
             </div>
 
@@ -269,9 +269,6 @@ function Index() {
           </div>
 
           {/* Phone Mockup */}
-          <div className="relative flex justify-center lg:justify-end">
-            <PhoneMockup />
-          </div>
         </div>
       </section>
 
@@ -764,7 +761,7 @@ function Index() {
             <p className="text-foreground/80 mb-8">
               Join hundreds of Indian families using Renomedy to simplify care and stay connected.
             </p>
-            <div className="w-full max-w-md">
+            <div className="w-full max-w-md relative z-50">
               <WaitlistForm />
             </div>
 
