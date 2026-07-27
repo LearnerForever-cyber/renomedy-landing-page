@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
-import { PhoneMockup } from "@/components/PhoneMockup";
-import { WaitlistForm } from "@/components/WaitlistForm";
 import { initAnalytics } from "@/lib/analytics";
-import logo from "@/assets/renomedy-logo.png";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { TrustSection } from "@/components/landing/TrustSection";
 import { ProblemSection } from "@/components/landing/ProblemSection";
@@ -44,45 +41,6 @@ function Index() {
   useEffect(() => {
     initAnalytics();
   }, []);
-
-  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
-
-  const toggleFAQ = (index: number) => {
-    setExpandedFAQ(expandedFAQ === index ? null : index);
-  };
-
-  const faqs = [
-    {
-      question: "How private is my prescription data?",
-      answer:
-        "Completely private. Your prescriptions are processed securely and never shared. HIPAA-aligned architecture. Your family data stays within your family.",
-    },
-    {
-      question: "Does Renomedy replace my doctor?",
-      answer:
-        "No. Renomedy supports your relationship with doctors, not replaces it. We decode what doctors already prescribed. All guidance says 'consult your doctor.'",
-    },
-    {
-      question: "Why focus on Indian prescriptions?",
-      answer:
-        "Indian prescription handwriting is different. Dosage abbreviations like OD (once daily), BD (twice daily), TDS (thrice daily) are specific. We're built for this, not generic.",
-    },
-    {
-      question: "Is Renomedy for everyone?",
-      answer:
-        "Renomedy is built for families managing BP, Diabetes, Thyroid, and chronic care. Perfect if you have elderly parents or manage medicines for multiple family members.",
-    },
-    {
-      question: "Can my family members access my medicines?",
-      answer:
-        "Only if you invite them. You control who sees what. Parents might see kids' medicines. Kids might see parents' medicines. Zero forced sharing.",
-    },
-  ];
-
-  const whatsappMessage = encodeURIComponent(
-    "Hi Renomedy, I'd like early access to the family care platform. Are you onboarding more families?",
-  );
-  const whatsappLink = `https://wa.me/919035658818?text=${whatsappMessage}`;
 
   return (
     <main className="min-h-screen">
