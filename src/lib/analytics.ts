@@ -39,7 +39,7 @@ export function track(event: string, properties?: Record<string, unknown>) {
   if (typeof window === "undefined" || !POSTHOG_KEY) return;
   try {
     // Sanitize properties to never include full email
-    const sanitized = {
+    const sanitized: Record<string, unknown> = {
       ...properties,
       page: "renomedy_landing",
     };
@@ -57,7 +57,7 @@ export function identify(id: string, properties?: Record<string, unknown>) {
   if (typeof window === "undefined" || !POSTHOG_KEY) return;
   try {
     // Sanitize to never send full email
-    const sanitized = {
+    const sanitized: Record<string, unknown> = {
       ...properties,
     };
     if (sanitized.email && typeof sanitized.email === "string") {

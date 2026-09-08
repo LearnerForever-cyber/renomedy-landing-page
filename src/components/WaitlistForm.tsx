@@ -95,8 +95,8 @@ export function WaitlistForm() {
           throw error;
         }
       } else {
-        // Success: generate a fun position number
-        setPosition(Math.floor(Math.random() * 400) + 100);
+        // Success: just thank them
+        setPosition(null);
         setDone(true);
         toast.success("Welcome to Renomedy Early Access.");
 
@@ -107,11 +107,19 @@ export function WaitlistForm() {
         track("waitlist_signup_completed", {
           ...utmParams,
         });
+        track("waitlist_submitted", {
+          ...utmParams,
+          success: true,
+        });
       }
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong. Please try again.");
       track("waitlist_signup_error", {
+        error: (err as Error)?.message || "Unknown error",
+        ...utmParams,
+      });
+      track("waitlist_submission_failed", {
         error: (err as Error)?.message || "Unknown error",
         ...utmParams,
       });
@@ -142,11 +150,6 @@ export function WaitlistForm() {
                 <Mail className="h-3 w-3 text-primary" />
                 {email.toLowerCase()}
               </span>
-              {position !== null && !alreadyJoined && (
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-2.5 py-1 font-semibold">
-                  #{position} in line
-                </span>
-              )}
             </div>
           </div>
         </div>
@@ -163,6 +166,7 @@ export function WaitlistForm() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onFocus={() => track("waitlist_started", { ...utmParams })}
           placeholder="Enter your email for early access"
           maxLength={255}
           aria-label="Email address"
@@ -177,7 +181,7 @@ export function WaitlistForm() {
             <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
             <>
-              Get Early Access <ArrowRight className="h-4 w-4" />
+              Join the Renomedy Beta <ArrowRight className="h-4 w-4" />
             </>
           )}
         </button>

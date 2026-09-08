@@ -12,7 +12,7 @@ if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
   );
 }
 
-export const WAITLIST_TABLE = "renomedy_waitlist";
+export const WAITLIST_TABLE = "waitlist";
 
 export const waitlistClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
   auth: {

@@ -49,6 +49,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   useEffect(() => {
     initAnalytics();
+    import("@/lib/analytics").then(({ track }) => track("landing_page_view"));
   }, []);
 
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
@@ -223,23 +224,13 @@ function Index() {
             </h1>
 
             <p className="mt-6 text-lg text-foreground/80 text-pretty font-medium">
-              The AI-powered care platform built for Indian families. Snap a photo of any
-              prescription and instantly get clear schedules, smart reminders, and family
-              coordination.
+              The care platform built for families. Snap a photo of any prescription to organize
+              medications, set smart reminders, and coordinate care effortlessly.
             </p>
 
             {/* Waitlist CTA */}
-            <div className="mt-8 max-w-md">
+            <div id="waitlist-section" className="mt-8 max-w-md scroll-mt-24">
               <WaitlistForm />
-            </div>
-
-            <div className="mt-6 flex items-center gap-3 text-sm text-muted-foreground">
-              <div className="flex -space-x-2">
-                <div className="w-6 h-6 rounded-full bg-blue-100 border-2 border-background"></div>
-                <div className="w-6 h-6 rounded-full bg-emerald-100 border-2 border-background"></div>
-                <div className="w-6 h-6 rounded-full bg-rose-100 border-2 border-background"></div>
-              </div>
-              <p>Join 500+ families on the waitlist.</p>
             </div>
 
             {/* Trust Row */}
@@ -272,6 +263,57 @@ function Index() {
           <div className="relative flex justify-center lg:justify-end">
             <PhoneMockup />
           </div>
+        </div>
+      </section>
+
+      {/* The Problem Section */}
+      <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20 lg:py-24 border-t border-border">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground text-balance">
+            Managing medicines for a family member shouldn't be this complicated.
+          </h2>
+        </div>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="rounded-2xl border border-border bg-surface/50 p-6 shadow-sm">
+            <h3 className="font-semibold text-foreground mb-2">Scattered Information</h3>
+            <p className="text-sm text-foreground/70">
+              Prescriptions lost across photos, paper files, and WhatsApp chats.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface/50 p-6 shadow-sm">
+            <h3 className="font-semibold text-foreground mb-2">Confusing Details</h3>
+            <p className="text-sm text-foreground/70">
+              Struggling to decode medicine names, strengths, and complex doctor instructions.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-surface/50 p-6 shadow-sm">
+            <h3 className="font-semibold text-foreground mb-2">Manual Tracking</h3>
+            <p className="text-sm text-foreground/70">
+              Relying on memory to remember doses and whether a family member took their medicine.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sound Familiar? Section */}
+      <section className="mx-auto max-w-6xl px-6 py-10 sm:py-12 border-t border-border">
+        <div className="rounded-2xl border border-border bg-gradient-to-br from-primary-soft/40 to-mint/20 p-8 text-center max-w-4xl mx-auto">
+          <h3 className="text-2xl font-bold text-foreground mb-6">Sound familiar?</h3>
+          <div className="grid sm:grid-cols-2 gap-4 text-left text-sm text-foreground/80 mx-auto">
+            <div className="p-4 bg-white/60 rounded-xl shadow-sm border border-white/40 italic">
+              "I have the prescription somewhere in my phone..."
+            </div>
+            <div className="p-4 bg-white/60 rounded-xl shadow-sm border border-white/40 italic">
+              "Which medicine was this again?"
+            </div>
+            <div className="p-4 bg-white/60 rounded-xl shadow-sm border border-white/40 italic">
+              "Did someone already give today's dose?"
+            </div>
+            <div className="p-4 bg-white/60 rounded-xl shadow-sm border border-white/40 italic">
+              "When did the doctor change this dosage?"
+            </div>
+          </div>
+          <p className="mt-8 text-lg font-semibold text-primary-deep">There's a simpler way.</p>
         </div>
       </section>
 
@@ -409,13 +451,13 @@ function Index() {
             },
             {
               step: "02",
-              title: "AI decodes it",
-              desc: "Our AI instantly translates doctor shorthand into a clear, understandable schedule.",
+              title: "Review it",
+              desc: "Renomedy extracts medication information for the caregiver to review and correct.",
             },
             {
               step: "03",
               title: "Stay on track",
-              desc: "Get smart reminders and share progress with your family securely.",
+              desc: "Organize medicines, set reminders and track doses easily.",
             },
           ].map((s, i) => (
             <div
@@ -470,19 +512,19 @@ function Index() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="border border-border rounded-xl p-4 bg-surface/50 opacity-80">
-              <h3 className="text-sm font-semibold text-foreground/70 mb-3">1mg / Practo</h3>
+              <h3 className="text-sm font-semibold text-foreground/70 mb-3">Manual Tracking</h3>
               <ul className="space-y-2 text-xs text-muted-foreground">
                 <li>❌ No AI decoder</li>
                 <li>❌ No family coordination</li>
-                <li>⚠️ Sells medicines & ads</li>
+                <li>⚠️ No centralization</li>
               </ul>
             </div>
             <div className="border border-border rounded-xl p-4 bg-surface/50 opacity-80">
-              <h3 className="text-sm font-semibold text-foreground/70 mb-3">Generic Apps</h3>
+              <h3 className="text-sm font-semibold text-foreground/70 mb-3">Scattered Notes</h3>
               <ul className="space-y-2 text-xs text-muted-foreground">
                 <li>❌ No AI decoder</li>
                 <li>❌ No family coordination</li>
-                <li>⚠️ Sells some ads</li>
+                <li>⚠️ Hard to coordinate</li>
               </ul>
             </div>
           </div>
@@ -498,10 +540,10 @@ function Index() {
                   Renomedy
                 </th>
                 <th className="text-center py-4 px-6 font-semibold text-foreground/60">
-                  Pharmacy Apps
+                  Manual Tracking
                 </th>
                 <th className="text-center py-4 px-6 font-semibold text-foreground/60">
-                  Generic Trackers
+                  Scattered Notes
                 </th>
               </tr>
             </thead>
@@ -510,9 +552,9 @@ function Index() {
                 ["AI prescription decoder (Indian format)", true, false, false],
                 ["Family medication coordination", true, false, false],
                 ["Caregiver-first design", true, false, false],
-                ["End-to-end private (no data selling)", true, "Partial", false],
+                ["End-to-end private", true, false, false],
                 ["Adherence tracking for whole family", true, false, false],
-                ["Sells medicines or ads", "No", "Yes", "Some"],
+                ["Centralized family workflow", true, false, false],
               ].map(([feat, ren, mg, gen], i) => (
                 <tr
                   key={i}
@@ -557,13 +599,13 @@ function Index() {
                 Your family's data is locked in a vault.
               </h2>
               <p className="text-foreground/80 mb-6">
-                We believe your health data is yours alone. We don't sell it, we don't share it with
-                pharmacies, and we use bank-level encryption to keep it safe.
+                We believe your health data is yours alone. We don't sell it and we don't share it.
+                You control who sees what in your family.
               </p>
               <ul className="space-y-3">
                 {[
-                  "End-to-end encryption for all health records",
-                  "HIPAA-aligned security architecture",
+                  "Secure health records storage",
+
                   "Zero data selling to advertisers or pharmacies",
                   "You control who sees what in your family",
                 ].map((item, i) => (
@@ -589,30 +631,6 @@ function Index() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Pain Points Callout */}
-      <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20 lg:py-24 border-t border-border">
-        <div className="rounded-2xl border border-border bg-gradient-to-br from-primary-soft/40 to-mint/20 p-8">
-          <h3 className="text-xl font-bold text-foreground mb-4">Sound familiar?</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-foreground/80">
-            {[
-              "😰 Can't read the doctor's handwriting",
-              "💊 Not sure if medicine is before or after food",
-              "⏰ Dad keeps missing his evening dose",
-              "📋 Lost the old prescription again",
-              "🧓 Managing meds for elderly parents alone",
-              "😕 Confused by OD, BD, TDS abbreviations",
-            ].map((p) => (
-              <div key={p} className="flex items-start gap-2">
-                <span>{p}</span>
-              </div>
-            ))}
-          </div>
-          <p className="mt-5 text-sm font-semibold text-primary-deep">
-            Renomedy was built to solve exactly these problems. →
-          </p>
         </div>
       </section>
 
@@ -659,6 +677,14 @@ function Index() {
               </ul>
               <button
                 id={`pricing-cta-${plan.name.toLowerCase().replace(" ", "-")}`}
+                onClick={() => {
+                  import("@/lib/analytics").then(({ track }) =>
+                    track("beta_cta_clicked", { plan: plan.name }),
+                  );
+                  document
+                    .getElementById("waitlist-section")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
                 className={`w-full rounded-xl px-5 py-3 text-sm font-bold transition ${
                   plan.highlight
                     ? "bg-primary text-primary-foreground hover:bg-primary-deep hover:shadow-lg"
@@ -759,10 +785,10 @@ function Index() {
         <div className="rounded-3xl bg-gradient-to-br from-primary-soft/30 to-mint/20 border border-border p-8 md:p-16 text-center shadow-soft">
           <div className="max-w-2xl mx-auto flex flex-col items-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Ready for complete peace of mind?
+              Make medication management simpler for your family.
             </h2>
             <p className="text-foreground/80 mb-8">
-              Join hundreds of Indian families using Renomedy to simplify care and stay connected.
+              Join the Renomedy beta to simplify care and stay connected.
             </p>
             <div className="w-full max-w-md">
               <WaitlistForm />
